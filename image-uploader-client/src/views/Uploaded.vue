@@ -3,7 +3,6 @@
     <div class="background_area">
     <el-result icon="success" />
       <p class="title_font">Uploaded Successfully!</p>
-      <!-- <div v-if="url"> -->
         <img :src="url">
         <div class="input_area">
           <el-input v-model="url"/>
@@ -11,10 +10,8 @@
             <el-button type="primary" @click="copyLink(url)">CopyLink</el-button>
           </el-row>
         </div>
-      <!-- </div> -->
     </div>
   </div>
-
 </template>
 
 <script>

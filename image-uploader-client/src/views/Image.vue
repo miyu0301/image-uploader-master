@@ -39,21 +39,15 @@ import axios from 'axios'
 import { VueLoading } from 'vue-loading-template'
 
 export default {
-
-  name: "ImagePage", // ImagePage not Image to avoid duplicate tag names
   components: {
     VueLoading
   },
   data () {
     return {
-        images: [],
         isEnter: false,
         isLoading: false,
         url: "",
     }
-  },
-  created: async function () {
-    await this.refresh()
   },
   methods: {
     clickFileInput(){
@@ -74,6 +68,8 @@ export default {
     },
     uploadFile: async function(file){
       this.isLoading = true
+
+      // to show loading-bar
       const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
       await _sleep(1000);
       
@@ -94,15 +90,10 @@ export default {
       };
 
       this.url = URL.createObjectURL(file);
-      this.$router.push({name : 'About', params: {url: this.url}})
-    },
-    refresh: async function () {
-      const res = await axios.get('http://localhost:8080/')
-      this.images = res.data.images
+      this.$router.push({name : 'Uploaded', params: {url: this.url}})
     },
   }
 }
-
 </script>
 
 <style scoped>
